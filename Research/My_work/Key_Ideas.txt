@@ -1,0 +1,2 @@
+use https://timm.fast.ai/ (timm) to download SOTA pre-trained models directly and working with them
+https://github.com/ShivamRajSharma/Vision-Transformer/blob/master/engine.py

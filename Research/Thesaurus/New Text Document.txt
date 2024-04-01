@@ -1,0 +1,12 @@
+Open cmd and run the following commands.
+git clone --filter=blob:none --sparse  %your-git-repo-url%
+cd %the repository directory%
+git sparse-checkout add %subdirectory-to-be-cloned%
+cd %your-subdirectory%
+
+----------------------------------------
+
+git clone --filter=blob:none --sparse  https://github.com/mrdbourke/pytorch-deep-learning
+cd pytorch-deep-learning
+git sparse-checkout add going_modular
+cd going_modular
