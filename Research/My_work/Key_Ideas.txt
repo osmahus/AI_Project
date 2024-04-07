@@ -2,3 +2,23 @@ use https://timm.fast.ai/ (timm) to download SOTA pre-trained models directly an
 https://github.com/ShivamRajSharma/Vision-Transformer/blob/master/engine.py
 
 
+
+from: First Principles of Computer Vision
+https://www.youtube.com/watch?v=jJd0jpku8qs&list=PL2zRqk16wsdoz4eycyq7EmeV2KpE6JN76&index=5
+
+Image Features Extraction in 2D includes the following:
+1) Edge Detection
+2) Corner Detection
+3) Boundary from Edge Detection
+4) 2D recognition using interesting points==> SIFT (Scale Invariant Feature Transform) Detector
+5) Image alignment and stitching
+6) Face Detection
+
+Image Perception:
+1) Image Segmentation
+2) Object Tracking
+3) Appearance Matching ==> Object Detection using PCA 
+
+
+
+for TORCH.NN.FUNCTIONAL.SCALED_DOT_PRODUCT_ATTENTION make sure to disable is_casual
