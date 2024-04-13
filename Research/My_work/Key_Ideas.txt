@@ -22,3 +22,53 @@ Image Perception:
 
 
 for TORCH.NN.FUNCTIONAL.SCALED_DOT_PRODUCT_ATTENTION make sure to disable is_casual
+
+
+
+model_type = "vit"
+add_extra_epochs = True  # if True then continue for extra epochs from the starting epoch
+# If True load a pretrained model, and start_epoch = epoch of the model . Else if False then start_epoch = 0
+start_from_model = False
+
+# Wavelet Packet Transform Hyper Parameters
+wpt_fun = 'db2'
+wpt_level = 2
+wpt_format = "Stack_ImgUseSameSize"
+wpt_ch = ((2**wpt_level)**2)
+img_and_wpt_channels = 3+wpt_ch
+print(img_and_wpt_channels)
+
+img_size = 32  # Input image height/width in pixels
+patch_size = 8 # The height/width of a patch in pixels (patch is a slice of an image)
+
+image_patch_flat_size = img_and_wpt_channels*patch_size**2 #3 Channels x height x width
+embed_size = image_patch_flat_size
+mlp_dim = 384 # dim of the last mlp classifier
+
+downscaling_factor=(2, 2, 2, 1) # used for swin
+
+train_batch_size = 256 # https://www.youtube.com/watch?v=Owm1H0ukjS4
+valid_batch_size = 256
+
+num_classes = 2
+encoder_depth = 9
+attention_heads = 12
+
+n_extra_epochs = 400
+max_epochs = 200
+
+base_lr = 0.005         # Base Learning rate 0.1 for SGD , 0.0001 for Adam
+momentum = 0.9          # Momentum for SGD
+weight_decay = 0.03     # Weight decay for Adam
+
+loss_algo = CrossEntropyLoss
+
+optimize_algo = SGD
+optimize_args = {"lr": base_lr,
+                #  "weight_decay": weight_decay,
+                #  "momentum": momentum  # comment momentum for Adam
+                 }
+
+use_scheduler = False
+schedule_algo = CosineAnnealingLR
+schedule_args = {"T_max": delta_epochs}
