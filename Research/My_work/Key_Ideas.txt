@@ -45,7 +45,7 @@ image_patch_flat_size = img_and_wpt_channels*patch_size**2 #3 Channels x height 
 embed_size = image_patch_flat_size
 mlp_dim = 384 # dim of the last mlp classifier
 
-downscaling_factor=(2, 2, 2, 1) # used for swin
+down-scaling_factor=(2, 2, 2, 1) # used for swin
 
 train_batch_size = 256 # https://www.youtube.com/watch?v=Owm1H0ukjS4
 valid_batch_size = 256
@@ -72,3 +72,45 @@ optimize_args = {"lr": base_lr,
 use_scheduler = False
 schedule_algo = CosineAnnealingLR
 schedule_args = {"T_max": delta_epochs}
+
+
+# https://www.youtube.com/watch?v=HEUhSbD4P5c&list=PLbMVogVj5nJRY7X-tMNDHPGdmfZyfHC7J&index=2
+01) Haar mentioned that one can crate continuous function using discontinuous function
+02) This idea became important while we are digitizing continuos signals (Audio , Images) using bits
+03) For example in images we discretize the original continuous signal to pixels
+04) Pixel is a picture element includes the average intensity of the image in this position
+05) Piecewise constant representation of the original image continuous signal is represented using a 2 dimensional sequence of pixels
+06) this is called Piecewise constant representation
+07) the smaller the pixel area -> the better the resolution
+08) Dilation and Translation of epsi(t) captures the signal features
+09) DYADIC Wavelet (Dilates by Powers of 2 to go from any resolution to the next resolution)
+10) Haar wavelet is an example of DYADIC
+11) Multi-Resolution Analysis "MRA" (Lader of Spaces): 
+    On one direction go from coarse space to finer subspaces, on the other direction go from coarse space to coarser subspaces.
+12) As an analogy , we are peeling off shell by shell using different dilates (from one resolution to the next) and translates(inside the same Resolution)
+13) Focal Point: Piecewise Constant approximation on unit intervals. inside each unit interval, the signal is represented by its average inside that unit interval.
+14) A set of functions forms a linear space if it's closed under linear combinations:
+    i.e. a any linear operation on any of these functions results in a new function in the same space.
+15) Linear operations includes: adding two functions, multiplying two functions, multiplying by constant.
+16) we call the space V, and gives it subscript notation m , means its interval period is 2^(-m) = 1/(2^m)
+17) Space V0 has interval 1 , space V1 has interval (1/2) , space V2 has interval (1/4)
+18) The space ladder means that: 
+    downwards <= .... V(-1) ⊂ V0 ⊂ V1 ⊂ V2 .... => upwards
+19) using Phi(t) of Haar (1 from t= 0 to 1 , and 0 elsewhere) represents an orthonormal basis 
+20) 
+21) 
+22) 
+
+Intuitive Understanding vs Rigorous Understanding
+
+
+https://www.youtube.com/watch?v=VXwXkME9uWU&list=PLMn2aW3wpAtOqo0g0OnHndXB1LnYBeMaX
+01) a norm is the mathematical word for length of a vector
+02) the norm in a vector space V is a mapping (mapping= function)
+  || . || : V -> R such that 
+  ||v|| >= 0  , for all V
+  ||v|| = 0 <=> v = 0
+  ||cv|| = |c| ||v|| , for and c in C(complex numbers set) amd all v in v
+  ||v+w|| <= ||v|| + ||w|| , for all v , w in v (Triangle inequality)
+03) a sequence vk shall converge to v as k approaches infinity
+04) a W subset of V, is called a subspace if W itself a vector space.
